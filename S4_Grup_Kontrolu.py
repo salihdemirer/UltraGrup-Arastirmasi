@@ -148,7 +148,8 @@ def islem(sayi1,sayi2):
             sayi_kumesi.remove(birebir_sayilar[0])
             sayi_kumesi.remove(birebir_sayilar[1])
             sonuc = str(sayi_kumesi[0])+str(sayi_kumesi[1])
-
+        if(birebirlik_sayisi==4):
+            sonuc = '1'
     return(sonuc)
     #En sonda eşitlik sayısı sayacını tekrar sıfırlamalıyım
     #Hepsinin farklı olduğu durum yazılacak
@@ -162,4 +163,4 @@ def islem(sayi1,sayi2):
 #print(islem('1324','14 23'))
 #print(islem('1423','14 23'))
 #print(islem('1423','1234'))
-print(islem('14 23','1243'))
+print(islem('1','1'))

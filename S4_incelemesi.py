@@ -34,19 +34,36 @@ print('Kaçıncı işlemde olduğunun tespiti \n')
 #print(kumeler_kumesi.index(['1321', '14', '23', '1231', '134', '142', '123', '243']))
 for k in kumeler_kumesi:
     sorted(k)
-yeni_kume = []
+# for i in kumeler_kumesi:
+#     sayac = 0
+#     for j in kumeler_kumesi:
+#         for k in range(0,len(i)):
+#             if(i[k] in j):
+#                 sayac = sayac + 1
+#         if(sayac == len(i)):
+#             kumeler_kumesi.remove(j)
+#         sayac = 0
+eskumeler = []
+eskumeler.append(kumeler_kumesi[0])
+kume1 = kumeler_kumesi[0]
+kumeler_kumesi.remove(kumeler_kumesi[0])
 for i in kumeler_kumesi:
-    kumeler_kumesi.remove(i)
     sayac = 0
-    for j in kumeler_kumesi:
-        for k in range(0,len(i)):
-            if(i[k] in j):
+    for j in range(0,len(kumeler_kumesi[0])):
+            if(kume1[j] in i):
                 sayac = sayac + 1
-        if(sayac == len(i)):
-            yeni_kume.append(j)
-        sayac = 0
-    kumeler_kumesi.append(i)
-
-print('Eşkümeler yazdırılıyor')
-print(kumeler_kumesi)
-print(len(kumeler_kumesi))
+    if(sayac == len(kume1)):
+        if(i in kumeler_kumesi):
+            kumeler_kumesi.remove(i)
+eskumeler.append(kumeler_kumesi[0])
+kume2 = eskumeler[1]
+for i in kumeler_kumesi:
+    sayac = 0
+    for j in range(0,len(kumeler_kumesi[0])):
+        if(kume2[j] in i):
+            sayac = sayac + 1
+    if(sayac == len(kume2)):
+        if(i in kumeler_kumesi):
+            kumeler_kumesi.remove(i)
+eskumeler.append(kumeler_kumesi[0])
+print("H1\G = "+str(eskumeler))
