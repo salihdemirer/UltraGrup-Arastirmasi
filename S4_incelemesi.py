@@ -32,18 +32,21 @@ print(indis_kumeler_kumesi)
 #             kumeler_kumesi.remove(kumeler_kumesi[j])
 print('Kaçıncı işlemde olduğunun tespiti \n')
 #print(kumeler_kumesi.index(['1321', '14', '23', '1231', '134', '142', '123', '243']))
-kumeler_kumesi = sorted(kumeler_kumesi)
+for k in kumeler_kumesi:
+    sorted(k)
+yeni_kume = []
 for i in kumeler_kumesi:
+    kumeler_kumesi.remove(i)
     sayac = 0
     for j in kumeler_kumesi:
         for k in range(0,len(i)):
             if(i[k] in j):
                 sayac = sayac + 1
         if(sayac == len(i)):
-            kumeler_kumesi.remove(j)
-    sayac = 0
+            yeni_kume.append(j)
+        sayac = 0
+    kumeler_kumesi.append(i)
+
 print('Eşkümeler yazdırılıyor')
 print(kumeler_kumesi)
 print(len(kumeler_kumesi))
-print(kumeler_kumesi.count(['132', '143', '234', '124', '13', '1432', '1234', '24']))
-print(kumeler_kumesi.count(['1423', '1324', '12', '34', '14 23', '13 24', '', '12 34']))
