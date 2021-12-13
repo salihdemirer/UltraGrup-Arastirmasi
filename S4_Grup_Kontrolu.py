@@ -6,19 +6,19 @@ def sayi_kontrol(sayi):
     sayi_kumesi = [1,2,3,4]
     #Eğer aynı rakam birden fazla varsa sayıyı hatalı döndürmeliyim !!!!!!
     if(len(str(sayi_))>5):
-        print('Verilen sayı S4 grubu için uyumsuz')
+        #print('Verilen sayı S4 grubu için uyumsuz')
         return(0)
     for i in range(0,len(sayi_)):
         if(sayi_[i]==' '):
             bosluk_sayisi = bosluk_sayisi + 1
     if(bosluk_sayisi==0):
-        print('Verilen sayı S4 grubu için uyumlu')
+        #print('Verilen sayı S4 grubu için uyumlu')
         return(0)
     if(bosluk_sayisi==1):
-        print('Verilen sayı S4 grubu için uyumlu')
+        #print('Verilen sayı S4 grubu için uyumlu')
         return(1)
     else:
-        print('Verilen sayı S4 grubu için uyumsuz')
+        #print('Verilen sayı S4 grubu için uyumsuz')
         return(2)
 def esleme_fonksiyonu(sayi):
     es_sozlugu = {}
@@ -103,27 +103,63 @@ def islem(sayi1,sayi2):
     print(sozluk3)
     #Sonuç olarak eşlenme tamamlandı ama bunun gösterimi ayarlanmalı
     esitlik_sayisi = 0
+    birebirlik_sayisi = 0 #Verilen key ile değerin eşit olmaması durumunda artar.
+    birebir_sayilar = []
     for i in range(1,5):
         print(sozluk3[str(i)])
         print(sozluk3[sozluk3[str(i)]])
+        if(str(i)==sozluk3[str(i)]):
+            birebirlik_sayisi = birebirlik_sayisi + 1
+            birebir_sayilar.append(i)
         if(str(i)== sozluk3[sozluk3[str(i)]]): # Burada bakılmak istenene dikkat
             esitlik_sayisi = esitlik_sayisi + 1
+
+    if(esitlik_sayisi==0):
+        sayi_kumesi = [1,2,3,4]
+        sayi_kumesi.remove(1)
+        sayi_kumesi.remove(int(sozluk3['1']))
+        #sonuc = '1'+str(sozluk3['1'])+" "+str(sayi_kumesi[0])+str(sozluk3[str(sayi_kumesi[0])])
+        sonuc = '1'+str(sozluk3['1'])+str(sozluk3[sozluk3['1']])+str(sozluk3[str(sozluk3[sozluk3['1']])])
     if(esitlik_sayisi== 1):
         sayi_kumesi=[1,2,3,4]
         for i in range(1,5):
             if(str(i)== sozluk3[sozluk3[str(i)]]):
                 sayi_kumesi.remove(int(i))
         print(sayi_kumesi)
-        #Algoritmada bir hata var bir işlem bir işlemi tutmuyor
+        sonuc = str(sayi_kumesi[0])+sozluk3[str(sayi_kumesi[0])]+sozluk3[sozluk3[str(sayi_kumesi[0])]]
+    if(esitlik_sayisi==1 and birebirlik_sayisi==1):
+        sayi_kumesi=[1,2,3,4]
+        for i in sayi_kumesi:
+            if(str(i)==sozluk3[sozluk3[str(i)]]):
+                sayi_kumesi.remove(i)
         sonuc = str(sayi_kumesi[0])+sozluk3[str(sayi_kumesi[0])]+sozluk3[sozluk3[str(sayi_kumesi[0])]]
     if(esitlik_sayisi==4):
-        sayi_kumesi=[1,2,3,4]
-        sayi_kumesi.remove(1)
-        sayi_kumesi.remove(int(sozluk3['1']))
-        print(sayi_kumesi)
-        #Sayı kümesi alıp ilk sayı ve onun götürdüğü sayıyı kümeden çıkarttım böylece elimde kalan iki eşitlik var.
-        sonuc = '1'+ str(str(sozluk3['1']))+ " " + str(sayi_kumesi[0]) + str(str(sozluk3[str(sayi_kumesi[0])]))
+        if(birebirlik_sayisi==0):
+            sayi_kumesi=[1,2,3,4]
+            sayi = sayi_kumesi[0]
+            sayi2 = int(sozluk3[str(sayi)])
+            sayi_kumesi.remove(sayi)
+            sayi_kumesi.remove(sayi2)
+            if(int(sozluk3[str(sayi_kumesi[1])])==sayi_kumesi[0]):
+                #Bu durumda sonuçlar ayrık yazılır
+                sonuc = str(sayi)+str(sayi2)+" "+str(sayi_kumesi[0])+str(sayi_kumesi[1])
+        if(birebirlik_sayisi==2):
+            sayi_kumesi=[1,2,3,4]
+            sayi_kumesi.remove(birebir_sayilar[0])
+            sayi_kumesi.remove(birebir_sayilar[1])
+            sonuc = str(sayi_kumesi[0])+str(sayi_kumesi[1])
+
     return(sonuc)
     #En sonda eşitlik sayısı sayacını tekrar sıfırlamalıyım
-
-print(islem('13 24','34'))
+    #Hepsinin farklı olduğu durum yazılacak
+    #1->2 2->1 3->3 4->4 gibi bir durumun yazılışı
+#print(islem('1','14 23'))
+#print(islem('12 34','14 23'))
+# print(islem('13 24','14 23'))
+# print(islem('14 23','14 23'))
+#print(islem('12','14 23'))
+# print(islem('34','14 23'))
+#print(islem('1324','14 23'))
+#print(islem('1423','14 23'))
+#print(islem('1423','1234'))
+print(islem('14 23','1243'))
