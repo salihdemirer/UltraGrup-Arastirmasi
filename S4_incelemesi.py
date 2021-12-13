@@ -66,4 +66,44 @@ for i in kumeler_kumesi:
         if(i in kumeler_kumesi):
             kumeler_kumesi.remove(i)
 eskumeler.append(kumeler_kumesi[0])
-print("H1\G = "+str(eskumeler))
+print("H\G = "+str(eskumeler))
+
+m_kumesi = []
+for i in eskumeler[0]:
+    kume = []
+    for j in eskumeler[1]:
+        for k in eskumeler[2]:
+            kume.append(i)
+            kume.append(j)
+            kume.append(k)
+            m_kumesi.append(kume)
+            kume = []
+print(len(m_kumesi))
+print(m_kumesi)
+kume = []
+for i in m_kumesi:
+        if('1' in i):
+            #m_kumesi.remove(i)
+            kume.append(i)
+print('-------------')
+print(str(len(kume))+'Adet seçilebilecek M kümesi kombinasyonu var')
+for i in range(0,len(kume)):
+    print('M'+str(i+1)+'='+str(kume[i]))
+
+def alpha(kume):
+    for i in kume:
+        for j in kume:
+            for k in eskumeler[0]: #Eşkümeler kümesinde 3 elemandan ilk elemana göre kontrol etmek istediğimiz için
+                if(islem(k,islem(i,j)) in kume):
+                    return(print('Alfa fonksiyonunu sağlar.'))
+# Kumeyi gönderirken for içerisinde göndermem gerekiyor.
+def beta(kume,h):
+    for i in kume:
+        for j in h:
+            for l in h: #Burda değişken h da olabilir aynı değişken gönderiliyor
+                if(islem(l,islem(i,h)) in kume):
+                    return(print('Beta fonksiyonunu sağlar'))
+
+
+alpha(kume[0])
+#beta(kume,eskumeler[0])
