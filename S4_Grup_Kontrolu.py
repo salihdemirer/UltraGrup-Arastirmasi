@@ -151,16 +151,3 @@ def islem(sayi1,sayi2):
         if(birebirlik_sayisi==4):
             sonuc = '1'
     return(sonuc)
-    #En sonda eşitlik sayısı sayacını tekrar sıfırlamalıyım
-    #Hepsinin farklı olduğu durum yazılacak
-    #1->2 2->1 3->3 4->4 gibi bir durumun yazılışı
-#print(islem('1','14 23'))
-#print(islem('12 34','14 23'))
-# print(islem('13 24','14 23'))
-# print(islem('14 23','14 23'))
-#print(islem('12','14 23'))
-# print(islem('34','14 23'))
-#print(islem('1324','14 23'))
-#print(islem('1423','14 23'))
-#print(islem('1423','1234'))
-print(islem('1','1'))
